@@ -16,6 +16,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -48,7 +52,11 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun BusinessCardContent(modifier: Modifier = Modifier) {
-    val name = "Brendan Chen"
+    var name by remember { mutableStateOf("Brendan Chen") }
+    var email by remember { mutableStateOf("me@bchen.dev") }
+    var phoneNumber by remember { mutableStateOf("+1 (123) 456-7890") }
+
+    var isEditing by remember { mutableStateOf(false) }
 
     // TODO: editing view
 
@@ -77,7 +85,7 @@ fun BusinessCardContent(modifier: Modifier = Modifier) {
             Row {
                 Icon(painter = painterResource(id = R.drawable.baseline_email_24), contentDescription = "Email")
                 Spacer(modifier = Modifier.width(8.dp))
-                Text(text = "me@bchen.dev")
+                Text(text = email)
             }
 
             Spacer(modifier = Modifier.height(8.dp))
@@ -85,7 +93,7 @@ fun BusinessCardContent(modifier: Modifier = Modifier) {
             Row {
                 Icon(painter = painterResource(id = R.drawable.baseline_add_call_24), contentDescription = "Email")
                 Spacer(modifier = Modifier.width(8.dp))
-                Text(text = "+1 (123) 456-7890")
+                Text(text = phoneNumber)
             }
         }
     }
