@@ -52,6 +52,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun BusinessCardContent(modifier: Modifier = Modifier) {
+    // Hold values of the business card
     var name by remember { mutableStateOf("Brendan Chen") }
     var email by remember { mutableStateOf("me@bchen.dev") }
     var phoneNumber by remember { mutableStateOf("+1 (123) 456-7890") }
@@ -64,13 +65,16 @@ fun BusinessCardContent(modifier: Modifier = Modifier) {
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        // Provide a background for the image
         Surface(
+            // Width scales automatically with the height
             modifier = Modifier.height(144.dp),
             color = MaterialTheme.colorScheme.primary
         ) {
+            // Grab the Android logo from resources, and display as image
             Image(painter = painterResource(id = R.drawable.android_logo), contentDescription = "Android logo")
         }
-        
+
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(
